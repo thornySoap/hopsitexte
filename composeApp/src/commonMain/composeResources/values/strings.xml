@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name" translatable="false">Hopsitexte</string>
+
+    <string name="import_file">Import …</string>
+    <string name="export_file">Export …</string>
+    <string name="import_title">Import Hopsitext</string>
+    <string name="export_base" translatable="false">hopsitext</string>
+    <string name="show_about">What is this?</string>
+    <string name="hide_about">Close general information</string>
+    <string name="switch_lightmode">Switch to light mode</string>
+    <string name="switch_darkmode">Switch to dark mode</string>
+    <string name="show_settings">Show editor display settings</string>
+    <string name="hide_setting">Hide editor display settings</string>
+    <string name="show_spoilers">Show spoilers for game</string>
+    <string name="hide_spoilers">Hide spoilers for game</string>
+    <string name="change_width">Change text width</string>
+    <string name="change_size">Change font size</string>
+    <string name="edit_color">Edit color</string>
+    <string name="show_text_information">Show text information</string>
+
+    <string name="font_placeholder">Aa</string>
+    <string name="new_text_placeholder">Write something hopsi …</string>
+    <string name="new_line_placeholder">\u21AA</string>
+    <string name="spoiler_placeholder">\u003F\u003F</string>
+    <string name="color_prefix" translatable="false">#</string>
+
+    <string name="bela">Bela</string>
+    <string name="amira">Amira</string>
+    <string name="union">Both</string>
+
+    <string name="information">Summary</string>
+    <string name="total_characters">Total amount of characters relevant for jumping:</string>
+    <string name="total_jumps_with_name">Total amount of jumps needed by %s:</string>
+    <string name="resulting_winner">So the winner is:</string>
+    <string name="no_winner">So there is no winner.</string>
+    <string name="is_hopsitext">This is a Hopsitext.</string>
+    <string name="no_hopsitext_with_line">This is not a Hopsitext with jumps joining in line %d.</string>
+
+    <string name="about_app">This is an entry for the 1st task "Hopsitexte" of the 43rd Bundeswettbewerb Informatik.\nIt is about a game two friends, Bela and Amira, play during lessons. They take a text with Bela starting from the first character and Amira from the second. Then they one after another look up for their current character, how far they should jump to the next character. An "a" corresponds to a jump value of 1 and a "z" to one of 26. "Ä", "ö", "ü" and "ß" correspond to 27-30. Whoever jumps out of the text first wins.\nNow there is Zara who wants to create those textes and she realizes Amira and Bela often jump out from the same character. Texts where this is not the case she calls "Hopsitexte".\nThis editor allows to create such texts by marking the respective jumps in the text. If Bela and Amira happen to land on the same character and because of that also jump out the text at the same one, the causing characters that point to the same one are marked boldly and need to be replaced by other characters.\nThe upper right options are 1.) Show/hide spoilers to enable the text-writer to play their own text 2.) Show/hide editor display settings and 3.) Toggle dark/light mode as you prefer. An information panel is accessible at the end of the text or by clicking on the Button in the bottom center.</string>
+
+</resources>

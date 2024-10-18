@@ -1,0 +1,37 @@
+[versions]
+agp = "8.2.2"
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
+kotlin = "2.0.20"
+compose-plugin = "1.6.11"
+compose-multiplatform = "1.6.11"
+androidx-activityCompose = "1.9.1"
+androidx-material = "1.12.0"
+kotlinx-coroutines = "1.8.1"
+kotlinx-serialization = "1.7.0"
+vinceglb-filekit = "0.8.7"
+skydoves-colorpicker = "1.1.2"
+
+[libraries]
+compose-multiplatform-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", version.ref = "compose-multiplatform" }
+compose-multiplatform-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "compose-multiplatform" }
+compose-multiplatform-foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "compose-multiplatform" }
+compose-multiplatform-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose-multiplatform" }
+compose-multiplatform-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "compose-multiplatform" }
+compose-desktop-linux-x64 = { group = "org.jetbrains.compose.desktop", name = "desktop-jvm-linux-x64", version.ref = "compose-multiplatform" }
+compose-desktop-windows-x64 = { group = "org.jetbrains.compose.desktop", name = "desktop-jvm-windows-x64", version.ref = "compose-multiplatform" }
+compose-desktop-macos-x64 = { group = "org.jetbrains.compose.desktop", name = "desktop-jvm-macos-x64", version.ref = "compose-multiplatform" }
+androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+compose-filekit-core = { group = "io.github.vinceglb", name = "filekit-core", version.ref = "vinceglb-filekit" }
+compose-colorpicker = { module = "com.github.skydoves:colorpicker-compose", version.ref = "skydoves-colorpicker" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="import_file">Import …</string>
+    <string name="export_file">Export …</string>
+    <string name="import_title">Importiere Hopsitext</string>
+    <string name="show_about">Was ist das?</string>
+    <string name="hide_about">Generelle Informationen verbergen</string>
+    <string name="switch_lightmode">Zum hellen Modus wecheln</string>
+    <string name="switch_darkmode">Zum dunklen Modus wechseln</string>
+    <string name="show_settings">Editor Anzeigeeinstellungen zeigen</string>
+    <string name="hide_setting">Editor Anzeigeeinstellungen verbergen</string>
+    <string name="show_spoilers">Spoiler fürs Spiel anzeigen</string>
+    <string name="hide_spoilers">Spoiler fürs Spiel verbergen</string>
+    <string name="change_width">Textbreite verändern</string>
+    <string name="change_size">Schriftgröße verändern</string>
+    <string name="edit_color">Farbe bearbeiten</string>
+    <string name="show_text_information">Informationen über Text anzeigen</string>
+    <string name="font_placeholder">Aa</string>
+    <string name="new_text_placeholder">Schreibe etwas Hopsiges …</string>
+    <string name="new_line_placeholder">\u21AA</string>
+    <string name="spoiler_placeholder">\u003F\u003F</string>
+    <string name="bela">Bela</string>
+    <string name="amira">Amira</string>
+    <string name="union">Beide</string>
+    <string name="information">Zusammenfassung</string>
+    <string name="total_characters">Buchstaben insgesamt, welche für Sprünge relevant sind:</string>
+    <string name="total_jumps_with_name">Menge an nötigen Sprüngen von %s:</string>
+    <string name="resulting_winner">Somit gewinnt das Spiel:</string>
+    <string name="no_winner">Somit gibt es keine*n Gewinner*in.</string>
+    <string name="is_hopsitext">Dies ist ein Hopsitext.</string>
+    <string name="no_hopsitext_with_line">Dies ist kein Hopsitext mit zusammengefügten Sprüngen ab Zeile %d.</string>
+    <string name="about_app">Dies ist eine Einsendung für die 1. Aufgabe "Hopsitexte" des 43. Bundeswettbewerb Informatik.\nEs geht um ein Spiel, das zwei Freunde, Bela und Amira, während des Unterrichts spielen. Sie nehmen einen Text, wobei Bela mit dem ersten Zeichen beginnt und Amira mit dem zweiten. Dann schauen sie abwechselnd abhängig von ihrem aktuellen Zeichen, wie weit sie zum nächsten Zeichen springen sollen. Ein „a“ entspricht einer Sprungweite von 1 und ein „z“ einer von 26. „Ä“, „ö“, „ü“ und „ß“ entsprechen den Werten 27-30. Wer zuerst aus dem Text herausspringt, gewinnt. Nun ist da Zara, die solche Texte erstellen möchte, und sie bemerkt, dass Amira und Bela oft vom selben Zeichen aus dem Text herausspringen. Texte, bei denen dies nicht der Fall ist, nennt sie „Hopsitexte“. Dieser Editor ermöglicht es, solche Texte zu erstellen, indem die entsprechenden Sprünge im Text markiert werden. Wenn Bela und Amira zufällig auf demselben Zeichen landen und deshalb an derselben Stelle aus dem Text herausspringen, werden die verursachenden Zeichen, die auf dieselbe Stelle zeigen, fett markiert und müssen durch andere Zeichen ersetzt werden. Die Optionen oben rechts sind: 1.) Spoiler anzeigen/verstecken, um es dem Textersteller zu ermöglichen, seinen eigenen Text zu spielen, 2.) Editor-Anzeigeeinstellungen anzeigen/verstecken und 3.) Dunkel-/Hellmodus nach Belieben umschalten. Ein Informationsfenster ist am Ende des Textes oder durch Klicken auf den Button unten in der Mitte auffindbar.</string>
+</resources>

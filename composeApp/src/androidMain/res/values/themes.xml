@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="backgroundLight">#FFF8F0</color>
+    <color name="backgroundDark">#16130C</color>
+
+    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Light">
+        <item name="android:windowBackground">@color/backgroundLight</item>
+    </style>
+</resources>
