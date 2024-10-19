@@ -8,10 +8,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.random.Random
@@ -100,8 +100,6 @@ class Hopsitext {
 
                 // The line containing the "fatal character". Needn't be the first one containing a union jump
                 var unionSourceLine: Int? = null
-                var belaTotalJumps = information.belaTotalJumps
-                var amiraTotalJumps = information.amiraTotalJumps
                 // Algorithm of the 2nd Junioraufgabe
                 var charIndex = 0
                 var nextBelaI = initialBelaIndex.takeIf { fromLine == 0 }
@@ -154,11 +152,6 @@ class Hopsitext {
                         belaInitial == line.belaInitial && amiraInitial == line.amiraInitial
                     ) break@calc
 
-                    belaTotalJumps += belaJumps.size - line.belaJumps.size +
-                            unionJumps.size - line.unionJumps.size
-                    amiraTotalJumps += amiraJumps.size - line.amiraJumps.size +
-                            unionJumps.size - line.unionJumps.size
-
                     lines[lineI] = line.copy(
                         belaInitial = belaInitial,
                         amiraInitial = amiraInitial,
@@ -169,11 +162,12 @@ class Hopsitext {
                     )
                 }
 
-                if (unionSourceLine == null &&
-                    information.unionSourceLine != null && information.unionSourceLine < fromLine
-                ) {
-                    unionSourceLine = information.unionSourceLine
+                information.unionSourceLine?.takeIf { it in lines.indices }?.let {
+                    lines[it] = lines[it].copy(unionSource = false)
                 }
+
+                if (information.unionSourceLine != null && information.unionSourceLine < fromLine)
+                    unionSourceLine = information.unionSourceLine
 
                 unionSourceLine?.let {
                     lines[it] = lines[it].copy(unionSource = true)
@@ -184,11 +178,29 @@ class Hopsitext {
                     this@Hopsitext.lines.clear()
                     this@Hopsitext.lines.addAll(lines)
 
-                    this@Hopsitext.information = information.copy(
-                        completelyAnalyzed = false,
+                    this@Hopsitext.information = information.copy(unionSourceLine = unionSourceLine)
+                }
+
+                // Total analysis is run after more important calculation
+                var belaTotalJumps = 0
+                var amiraTotalJumps = 0
+                var totalCharacters = 0
+
+                for (line in this@Hopsitext.lines) {
+                    if (breakCalculationAt != null)
+                        throw CancellationException()
+
+                    belaTotalJumps += line.belaJumps.size + line.unionJumps.size
+                    amiraTotalJumps += line.amiraJumps.size + line.unionJumps.size
+                    totalCharacters += line.text.count { it in jumpValues }
+                }
+
+                withContext(Dispatchers.Main) {
+                    this@Hopsitext.information = Information(
                         unionSourceLine = unionSourceLine,
                         belaTotalJumps = belaTotalJumps,
                         amiraTotalJumps = amiraTotalJumps,
+                        totalCharacters = totalCharacters,
                     )
                 }
             }
@@ -196,38 +208,6 @@ class Hopsitext {
             calculationJob?.invokeOnCompletion {
                 if (breakCalculationAt == null)
                     calculationJob = null
-            }
-        }
-    }
-
-    /**
-     * Checks all [lines] and updates [information].
-     */
-    suspend fun performCompleteAnalysis() {
-        withContext(Dispatchers.Default) {
-            var firstUnionLine: Int? = null
-            var belaTotalJumps = 0
-            var amiraTotalJumps = 0
-            var totalCharacters = 0
-
-            for ((lineI, line) in lines.withIndex()) {
-                if (!isActive) return@withContext
-
-                if (firstUnionLine == null && line.unionJumps.isNotEmpty())
-                    firstUnionLine = lineI
-                belaTotalJumps += line.belaJumps.size + line.unionJumps.size
-                amiraTotalJumps += line.amiraJumps.size + line.unionJumps.size
-                totalCharacters += line.text.count { it in jumpValues }
-            }
-
-            withContext(Dispatchers.Main) {
-                information = Information(
-                    completelyAnalyzed = true,
-                    unionSourceLine = firstUnionLine,
-                    belaTotalJumps = belaTotalJumps,
-                    amiraTotalJumps = amiraTotalJumps,
-                    totalCharacters = totalCharacters,
-                )
             }
         }
     }
@@ -265,7 +245,6 @@ class Hopsitext {
 
     @Immutable
     data class Information(
-        val completelyAnalyzed: Boolean = false,
         val unionSourceLine: Int? = null,
         val belaTotalJumps: Int = 0,
         val amiraTotalJumps: Int = 0,

@@ -26,6 +26,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.material)
         }
+
         commonMain.dependencies {
             implementation(libs.compose.multiplatform.runtime)
             implementation(libs.compose.multiplatform.ui)
@@ -35,10 +36,12 @@ kotlin {
             implementation(libs.compose.filekit.core)
             implementation(libs.compose.colorpicker)
         }
+
         desktopMain.dependencies {
-            implementation(libs.compose.desktop.linux.x64)
-            implementation(libs.compose.desktop.windows.x64)
-            implementation(libs.compose.desktop.macos.x64)
+//            implementation(libs.compose.desktop.linux.x64.get().toString()) {
+            implementation(compose.desktop.currentOs) {
+                exclude(group = "org.jetbrains.compose.material")
+            }
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.kotlinx.serialization.core)
         }
@@ -57,8 +60,8 @@ android {
         applicationId = "de.thornysoap.hopsitexte"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.0.1"
     }
     packaging {
         resources {
@@ -90,7 +93,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Hopsitexte"
-            packageVersion = "1.0.0"
+            packageVersion = "1.0.1"
             description = "BWINF 43 Aufgabe 1"
 
             linux {

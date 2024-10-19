@@ -243,10 +243,6 @@ fun Editor(
                 }
 
                 item {
-                    LaunchedEffect(hopsitext.lines) {
-                        hopsitext.performCompleteAnalysis()
-                    }
-
                     CompositionLocalProvider(LocalTextStyle provides typography.titleMedium) {
                         HopsiInformation(
                             information = hopsitext.information,
@@ -321,10 +317,6 @@ fun Editor(
                 enter = expandVertically(expandFrom = Alignment.Top),
                 exit = shrinkVertically(shrinkTowards = Alignment.Top),
             ) {
-                LaunchedEffect(Unit) {
-                    hopsitext.performCompleteAnalysis()
-                }
-
                 Surface(
                     modifier = Modifier.width(480.dp),
                     shape = shapes.large.copy(bottomEnd = CornerSize(0f), bottomStart = CornerSize(0f)),
@@ -557,7 +549,7 @@ private fun HopsiInformation(
 
         if (information.unionSourceLine != null)
             Text(
-                text = stringResource(Res.string.no_hopsitext_with_line).format(information.unionSourceLine),
+                text = stringResource(Res.string.no_hopsitext_with_line).format(information.unionSourceLine + 1),
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(unionColor)
